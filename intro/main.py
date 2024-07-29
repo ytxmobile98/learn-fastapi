@@ -11,16 +11,16 @@ class Item(BaseModel):
 
 
 @app.get("/")
-async def read_root() -> dict[str, str]:
+def read_root() -> dict[str, str]:
     return {"Hello": "World"}
 
 
 @app.get("/items/{item_id}")
-async def read_item(item_id: str, q: str | None = None) \
+def read_item(item_id: str, q: str | None = None) \
         -> dict[str, str | None]:
     return {"item_id": item_id, "q": q}
 
 
 @app.put("/items/{item_id}")
-async def update_item(item_id: int, item: Item) -> dict[str, int | Item]:
+def update_item(item_id: int, item: Item) -> dict[str, int | Item]:
     return {"item_id": item_id, "item": item}
